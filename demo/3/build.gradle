@@ -1,0 +1,9 @@
+task initializeDatabase // a task
+initializeDatabase << {println 'connect to database'}  // << appends action code to a task.
+initializeDatabase << {println 'update database schema'}
+initializeDatabase { println 'configuring database connection'} //without the << it's a configuration block. And is run before execution phase.
+
+//Gradle has 3 lifecycle phases: initialization, configuration, and execution.
+//Execution: is the phase in which build tasks are executed in the order required by their dependency releationships.
+//Configuration: is the phase in which those task objectsa re assembled into an internal object model, usually called the DAG (directed acyclic graph).
+//Initalization: is the phase in which Gradle decides which projects to participate in the build. Important phas in multiproject builds.
